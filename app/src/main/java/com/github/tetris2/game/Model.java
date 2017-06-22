@@ -237,6 +237,8 @@ public class Model {
 				// add lines to counter:
 				counter.addLine();
 			}
+			// jmj - game is over (or won!)
+			return false;
 		}
 
 		// Generate the new block:

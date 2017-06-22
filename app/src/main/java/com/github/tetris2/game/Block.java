@@ -74,13 +74,13 @@ public class Block implements Serializable {
 
 	public final static synchronized Block createBlock() {
 		// generate random number:
-		int indexShape = random.nextInt(Shape.values().length);
-		BlockColor blockColor = BlockColor.values()[random.nextInt(BlockColor
-				.values().length)];
+		//int indexShape = random.nextInt(Shape.values().length);
+		int indexShape = 1; //long piece
+		BlockColor blockColor = BlockColor.values()[random.nextInt(BlockColor.values().length)];
 		Block result = new Block(indexShape, blockColor);
-		// Set to the middle
-		result.topLeft.setX( result.topLeft.getX() - Shape.values()[indexShape].getStartMiddleX());
-		
+        //set to left
+		result.topLeft.setX(0);
+
 		return result;
 		
 	}
@@ -106,13 +106,12 @@ public class Block implements Serializable {
 
 			@Override
 			public Frame getFrame(int n) {
-				switch (n) {
-				case 0:
-					return new Frame(4).add("1111");
-				case 1:
-					return new Frame(1).add("1").add("1").add("1").add("1");
-				}
-				throw new IllegalArgumentException("Invalid frame number: " + n);
+                return new Frame(4)
+                        .add("1111111111").add("1111111111").add("1111111111")
+                        .add("1111111111").add("1111111111").add("1111111111")
+                        //.add("1111111111").add("1111111111").add("1111111111")
+                        //.add("1111111111").add("1111111111").add("1111111111")
+                        .add("1111111111").add("1111111111").add("1111111111");
 			}
 		},
 		S3(4, 1) {

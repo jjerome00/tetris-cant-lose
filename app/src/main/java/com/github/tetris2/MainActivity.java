@@ -1,15 +1,18 @@
 package com.github.tetris2;
 
-import com.github.tetris2.game.Model;
-import com.github.tetris2.game.ScoresCounter;
-
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
+import com.github.tetris2.game.Model;
+import com.github.tetris2.game.ScoresCounter;
 
 public class MainActivity extends Activity {
 
@@ -95,6 +98,10 @@ public class MainActivity extends Activity {
 		highScoresView.setTypeface(tf);
 		messageView.setTypeface(tf);
 
+        // Setup tada sound
+		SoundPool sp = new SoundPool(5, AudioManager.STREAM_MUSIC,0);
+		int soundId = sp.load(this, R.raw.tada, 1);
+		sp.play(soundId, 1, 1, 0, 0, 1);
 	}
 
 	private int getDirection(View v, MotionEvent event) {
@@ -131,8 +138,12 @@ public class MainActivity extends Activity {
 	public void endGame() {
 		messageView.setVisibility(View.VISIBLE);
 		storeHighScoresAndLines();
-		messageView
-				.setText(getApplicationContext().getText(R.string.mode_over));
+		messageView.setText(getApplicationContext().getText(R.string.mode_win));
+
+        //play tada!
+        MediaPlayer mPlayer = MediaPlayer.create(this, R.raw.tada); // in 2nd param u have to pass your desire ringtone
+        //mPlayer.prepare();
+        mPlayer.start();
 	}
 
 	public void pauseGame() {
