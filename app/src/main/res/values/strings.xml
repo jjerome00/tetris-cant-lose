@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tetris</string>
+    <string name="app_name">Tetris Can\'t Lose!</string>
     <string name="mode_ready">Tetris\nTouch The Screen To Play\nPress "Back" for exit</string>
     <string name="mode_pause">Paused\nTouch The Screen To Resume\nPress "Back" for exit</string>
     <string name="mode_over">Game Over\nTouch The Screen To Play Again\nPress "Back" for exit</string>
